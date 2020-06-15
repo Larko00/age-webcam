@@ -4,7 +4,7 @@ import time
 from PIL import Image
 
 capture = cv2.VideoCapture(0)
-img_counter = 0
+#img_counter = 0
 
 age = "N/A"
 score = "N/A"
@@ -19,14 +19,14 @@ while(True):
     if cv2.waitKey(1) == 27:
         break
     elif cv2.waitKey(1) == 32:
-        img_name = "opencv_frame_{}.png".format(img_counter)
+        #img_name = "opencv_frame_{}.png".format(img_counter)
         cv2.imwrite("frame.png", frame)
         #print("{} written!".format(img_name))
-        img_counter += 1
+        #img_counter += 1
 
         # API REQUEST #
-        client_id = '1t6QOQlElGzIOiEwAeIUw9iO'
-        client_secret = 'VienftVyXRIZ8gh0zsYl830g0GEORlBDXk2V5jZcxkFurBIT'
+        client_id = '<CLIENT_ID>'
+        client_secret = '<CLIENT_SECRET>'
         with open(f'frame.png','rb') as image:
             data = {'data': image}
             quality = requests.post('https://api.everypixel.com/v1/faces', files=data, auth=(client_id, client_secret)).json()
